@@ -342,7 +342,7 @@ content.innerHTML = "This is content<br>";
 // let sinhvien = new Student('NPT', 18);
 // console.log(sinhvien.eat());
 
-/** Cách 2: Sử dụng Propotype */
+/** Cách 2: Sử dụng Prototype */
 // function Person(firstName, lastName) {
 //     this.firstName = firstName || 'unknown';
 //     this.lastName = lastName || 'unknown';
@@ -365,3 +365,152 @@ content.innerHTML = "This is content<br>";
 // console.log(std instanceof Student);
 // console.log(std instanceof Person);
 
+/**
+ * Nạp chồng: Overloading
+ */
+// function countItems(x) {
+//     return x.toString().length;
+// }
+// console.log(countItems(123));
+// console.log(countItems("abcd"));
+
+// function sum(x = 0, y = 0, z = 0) {
+//     x = parseFloat(x);
+//     y = parseFloat(y);
+//     z = parseFloat(z);
+//     return x + y + z;
+// }
+// console.log(sum(3, 4, 5));
+// console.log(sum(3, 4));
+// console.log(sum(3, 4, '5'));
+
+
+/**
+ * === Cú pháp ES6 ===
+ */
+
+/**
+ * String
+ */
+// // Template Literals: Truyền biến vào String sử dụng dấu ``:
+// const a = 10, b = 50;
+// const str = `Truyền biến: ${a} ${a > b ? '>' : '<='} ${b}`
+// console.log(str);
+
+
+// // Tagged Templates: chuyển đổi 1 template literal và trả về một giá trị
+// function passthru(literals, ...substitutions) {
+//     let result = '';
+//     console.log(literals);
+//     console.log(substitutions);
+//     // chạy một vòng lặp để đếm số lượng
+//     for (let i = 0; i < substitutions.length; i++) {
+//         result += literals[i];
+//         result += substitutions[i];
+//     }
+//     // thêm chữ cuối cùng
+//     result += literals[literals.length - 1];
+//     return result;
+// }
+// let count = 10,
+//     price = 0.25,
+//     message = passthru`${count} vật phẩm ${"abc"} có giá $${(count * price).toFixed(2)}`;
+// console.log(message);
+
+/**
+ * Function
+ */
+// // Function có tham số mặc định
+// function sum(a, b = 0, c = 0) {
+//     return a + b + c;
+// }
+// console.log(sum(10, 9));
+
+/**
+ * Arrow Function
+ * Không sử dụng được this, super, arguments.
+ * Không có bind => không thể định nghĩa lại this do đó this sẽ tương ứng với ngữ cảnh gần nhất của nó
+ * Không thể gọi hàm với từ khoá new. Không có constructor
+ * Không có prototype
+ */
+// let sum = (a = 0, b = 0, c = 0) => a + b + c;
+// console.log(sum(10, 9));
+
+// let doNothing = () => {
+//     console.log("Do something");
+// }
+// doNothing();
+
+
+/**
+ * === Destructuring ===
+ * Dùng để bóc tách dữ liệu trong JSON một cách nhanh chóng
+ * Object
+ * Array
+ */
+
+// // Object Destructuring
+// const route = {
+//     title: 'Trang chủ',
+//     component: 'A component',
+//     path: '/home'
+// };
+
+// let {path, title, component} = route;
+// console.log(title);
+// console.log(path);
+// console.log(component);
+
+// // Array Destructuring
+// let colors = ['red', 'green', 'blue'];
+
+// let [, secondColor, threeColor] = colors;
+// console.log(firstColor);
+// console.log(secondColor);
+// console.log(threeColor);
+// var firstColor;
+
+/**
+ * Spread operator (...):
+ * Ghép nối/kết hợp nhiều mảng
+ * Kết hợp 2 hay nhiều Object với nhau
+ * Làm đối số cho function
+ * Rest Prameters
+ */
+// // Ghép nối/kết hợp nhiều mảng
+// const users = ['A', 'B', 'C'];
+// const extend_users = ['D', 'E'];
+// // console.log(users.concat(extend_users));
+// const more_users = [...users, ...extend_users];
+// console.log(more_users);
+
+// // Kết hợp 2 hay nhiều Object với nhau
+// let objectOne = {
+//     name: "VNTALKING",
+//     age: 4
+// }
+// let objectTwo = {
+//     createDate: "16/12/2017",
+//     founder: "Dương Anh Sơn"
+// }
+// //Kết hợp hai objectOne và objectTwo, đồng thời thêm cả thuộc tính mới
+// let merge = {...objectOne, ...objectTwo, status: "Đang hoạt động"}
+// console.log(merge)
+
+// // Làm đối số cho function
+// function multiply(a, b) {
+//     return a * b
+// }
+// const numbers = [6, 7, 8]
+// // let result = multiply.apply(null, numbers); // ES5
+// let result = multiply(...numbers); // ES6
+// console.log(result);
+// console.log(...numbers);
+
+// // Rest Prameters
+// function display(a, b, ...theRest) {
+//     console.log(a) // 4
+//     console.log(b) // 8
+//     console.log(theRest);
+// }
+// display(4, 8, 15, 16, 17, 18)
