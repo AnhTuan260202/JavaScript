@@ -263,3 +263,105 @@ content.innerHTML = "This is content<br>";
 // functionName = multiplyBy(3);
 // let result = functionName(4);
 // console.log(result)
+
+
+/**
+ * Callback (truyền tham số là một hàm) sử dụng để chạy đồng bộ hàm
+ * Callback Hell: callback lồng nhau quá sâu, nhiều tầng
+ */
+// function asyncFunction(callback) {
+//     // ...
+// }
+// asyncFunction(function() {
+//     asyncFunction(function() {
+//         asyncFunction(function() {
+//             // ....
+//         })
+//     })
+// })
+
+/**
+ * Promise: sử dụng cho tính toán bất đồng bộ. Một promise đại diện cho một tiến trình hay một tác vụ chưa thể hoàn thành ngay được
+ * Trong tương lai sẽ trả về giá trị hoặc là đã được giải quyết(resolve) hoặc là không (reject)
+ * gồm 3 trạng thái: pending, fulfilled, rejected
+ */
+
+// const isDadHappy = true; // tâm trạng của bố
+
+// // Định nghĩa một promise
+// let buyNewToy = new Promise(function(resolve, reject) {
+//     if (isDadHappy) {
+//         let toy = {
+//             name: "Oto Camry 2.0 moi nhat"
+//         }
+//         resolve(toy);
+//     } else {
+//         reject("Bo xin loi khong mua duoc roi");
+//     }
+// });
+
+// // Cách dùng
+// let askDad = function() {
+//     buyNewToy.then(function (fulfilled) {
+//         console.log("Minh nhan duoc mot mon do choi tu bo la: " + fulfilled.name);
+//     })
+//     .catch(function(reject) {
+//         console.log("Khong co do choi nao ca");
+//     })
+// }
+
+// askDad();
+
+
+/**
+ * ==== Class ====
+ */
+
+/** Cách 1: Sử dụng từ khoá extends để kế thừa các Object định nghĩa bằng từ khoá class */
+// class Person {
+//     constructor(name) {
+//         this.name = name;
+//     }
+
+//     eat() {
+//         return `${this.name} đang ăn giò`;
+//     }
+// }
+
+// class Student extends Person {
+//     constructor(name, id) {
+//         super(name);
+//         this.id = id;
+//     }
+
+//     eat() {
+//         return `${super.eat()},\nMSV: ${this.id}`;
+//     }
+// }
+
+// let sinhvien = new Student('NPT', 18);
+// console.log(sinhvien.eat());
+
+/** Cách 2: Sử dụng Propotype */
+// function Person(firstName, lastName) {
+//     this.firstName = firstName || 'unknown';
+//     this.lastName = lastName || 'unknown';
+// }
+
+// Person.prototype.getFullName = function() {
+//     return this.firstName + ' ' + this.lastName;
+// }
+
+// function Student(firstName, lastName, schoolName, grade) {
+//     Person.call(this, firstName, lastName);
+//     this.schoolName = schoolName || 'unknown';
+//     this.grade = grade || 0;
+// }
+// Student.prototype = new Person();
+// Student.prototype.constructor = Student;
+// var std = new Student('NP', 'T', 'ABC', 12);
+
+// console.log(std.getFullName());
+// console.log(std instanceof Student);
+// console.log(std instanceof Person);
+
