@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14</title>
+</head>
+
+<body>
+    <h1>The extension of a filename.</h1>
+    <pre>This is extension of filename</pre>
+</body>
+
+<script>
+    var pre = document.getElementsByTagName('pre');
+    var textNode = pre[0].childNodes[0];
+
+    const fileName = "system.php";
+    textNode.data = fileName.split('.').pop();
+</script>
+
+</html>

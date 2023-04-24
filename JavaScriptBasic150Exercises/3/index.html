@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3</title>
+</head>
+
+<body>
+    <h1>Write a JavaScript program to get the current date.</h1>
+    <h4>Today: <span id="today">Click button to show today</span></h4>
+    <p>Select a format date</p>
+    <select onchange="show_btn()" name="" id="format_date">
+        <option value="-1">Select a option</option>
+        <option value="0">mm-dd-yyyy</option>
+        <option value="1">mm/dd/yyyy</option>
+        <option value="2">dd-mm-yyyy</option>
+        <option value="3">dd/mm/yyyy</option>
+    </select>
+    <button disabled id="btn_show_date" onclick="show_date()">Show date</button>
+</body>
+<script>
+    const type_format_date = function (option = 0, dd, mm, yyyy) {
+        let text = "";
+        switch (parseInt(option)) {
+            case 0:
+                text = `${mm}-${dd}-${yyyy}`;
+                break;
+            case 1:
+                text = `${mm}/${dd}/${yyyy}`;
+                break;
+            case 2:
+                text = `${dd}-${mm}-${yyyy}`;
+                break;
+            case 3:
+                text = `${dd}/${mm}/${yyyy}`;
+                break;
+        }
+        return text;
+    }
+    let option = format_date.value;
+    function show_btn() {
+        option = format_date.value
+        const btn_show_date = document.getElementById("btn_show_date");
+        if (option != '-1') {
+            btn_show_date.disabled = false;
+        } else {
+            btn_show_date.disabled = true;
+        }
+    }
+
+    function show_date() {
+        const today = document.getElementById("today");
+        const date = new Date();
+        let day = date.getDate();
+        day = day < 10 ? "0" + day : day;
+        let month = date.getMonth() + 1;
+        month = month < 10 ? "0" + month : month;
+        let year = date.getFullYear();
+        const text = type_format_date(option, day, month, year);
+        today.innerHTML = `${text}`;
+    }
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+</head>
+<body>
+    <h1>JavaScript current day and time</h1>
+    <h4>Today is: <span id="today"></span></h4>
+    <h4>Current time is: <span id="current_time"></span></h4>
+</body>
+<script>
+    const today = document.getElementById("today");
+    const current_time = document.getElementById("current_time");
+    today.innerHTML = "Tuesday";
+    current_time.innerHTML = "10 PM : 30 : 38";
+
+    
+    const days_of_week = ['Sunday', 'Monday', 'Tuesday', 'wednesday', 'Thursday', 'Firday', 'Saturday'];
+    setInterval(function() {
+        const date_time = new Date();
+        const day_of_week = days_of_week[date_time.getDay()];
+        today.innerHTML = day_of_week;
+        let hour = date_time.getHours();
+        let minute = date_time.getMinutes();
+        let second = date_time.getSeconds();
+        let prepand = hour >= 12 ? "PM" : "AM";
+        hour = hour % 12;
+        current_time.innerHTML = `${hour} ${prepand} : ${minute} : ${second}`;
+    }, 1000);
+    
+</script>
+</html>

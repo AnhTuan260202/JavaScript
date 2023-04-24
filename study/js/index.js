@@ -514,3 +514,17 @@ content.innerHTML = "This is content<br>";
 //     console.log(theRest);
 // }
 // display(4, 8, 15, 16, 17, 18)
+
+/**
+ * === Module ===
+ * Đóng gói mã nguồn thành một bộ phận chạy độc lập trong dự án
+ * === Export ===
+ * Xuất bản một đoạn mã (có thể là hàm, biến, ...) ra ngoài để có thể sử dụng
+ * === Import
+ * Sử dụng đoạn mã được Export từ một module, cần phải import module vào
+ */
+
+/** Export */
+// file example.js
+import {myFunction} from "./example.js";
+myFunction();
